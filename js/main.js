@@ -166,6 +166,15 @@ document.addEventListener('DOMContentLoaded', function () {
     createElem() {
       this.arrElem.push(new Note(this.name));
     }
+    createMenu() {
+      let textarea = document.createElement('textarea');
+      textarea.classList.add('input', 'note-form');
+      container.append(textarea);
+      textarea.textContent = this.note.note;
+      textarea.oninput = () => {
+        this.note.note = textarea.value;
+      };
+    }
     display() {
       if (!this.activeElement && document.querySelector(this.removeBlock)) {
         document.querySelector(this.removeBlock).style.display = 'none';
